@@ -1,11 +1,11 @@
-import Sequelize from "sequelize";
+import pkg from "pg";
+const { Pool } = pkg;
 
-// Option 1: Passing a connection URI
-const sequelize = new Sequelize("postgres://user:pass@example.com:5432/dbname");
+const pool = new Pool({
+  user: "bastiendurand",
+  host: "localhost",
+  post: "5432",
+  database: "checklist",
+});
 
-try {
-  await sequelize.authenticate();
-  console.log("Connection has been established successfully.");
-} catch (error) {
-  console.error("Unable to connect to the database:", error);
-}
+export default pool;
